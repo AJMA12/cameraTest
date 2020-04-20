@@ -19,6 +19,7 @@
     <!-- Div to show the scanner -->
     <div id="scanner-container"></div>
     <input type="button" id="btn" value="Start/Stop the scanner" />
+    <p id="result">Texto</p>
 
     <!-- Include the image-diff library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
@@ -106,6 +107,7 @@
 
             Quagga.onDetected(function (result) {
                 console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
+                $("result").text = "Barcode detected and processed : [" + result.codeResult.code + "]";
             });
         }
 
