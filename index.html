@@ -63,7 +63,8 @@
                             showTransformedBox: true,
                             showBB: true
                         }
-                    }
+                    },
+                    multiple: false, // si sigue leyendo despues que encontró uno 
                 },
 
             };
@@ -110,7 +111,7 @@
             Quagga.onDetected(function (result) {
                 var texto = "Barcode detected and processed : [" + result.codeResult.code + "]";
                 console.log(texto, result);
-                document.getElementById("result").innerHTML = texto;
+                document.getElementById("result").innerHTML = JSON.stringify(result.codeResult) ;
             });
         }
 
