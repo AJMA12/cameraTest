@@ -107,7 +107,7 @@
 
             Quagga.onDetected(function (result) {
                 console.log("Barcode detected and processed : [" + result.codeResult.code + "]", result);
-                $("result").text = "Barcode detected and processed : [" + result.codeResult.code + "]";
+                document.getElementById("result").innerHTML = "Barcode detected and processed : [" + result.codeResult.code + "]";
             });
         }
 
