@@ -110,6 +110,7 @@
                     document.getElementById("result").innerHTML = "Barcode: { " + result.codeResult.code + "}";
                     Quagga.stop();
                     _scannerIsRunning = false;
+                    document.getElementById("debug").innerHTML = "OK!";
                 } else {
                     document.getElementById("debug").innerHTML = "length = " + result.codeResult.code.length + "(length != 13)";
                 }
