@@ -40,7 +40,8 @@
                 },
                 decoder: {
                     readers: [
-                        "code_128_reader"
+                        "ean_reader",
+                        "ean_8_reader"
                     ],
                     debug: {
                         showCanvas: true,
@@ -104,6 +105,7 @@
                 var texto = "Barcode detected and processed : [" + result.codeResult.code + "]";
                 console.log(texto, result);
                 document.getElementById("result").innerHTML = result.codeResult.code ;
+                Quagga.stop();
             });
         }
 
