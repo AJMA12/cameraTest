@@ -116,6 +116,7 @@
                 console.log(texto, result);
 
                 var countDecodedCodes=0, err=0;
+                var codigosLeidos = "";
                 $.each(result.codeResult.decodedCodes, function(id,error){
                     if (error.error!=undefined) {
                         countDecodedCodes++;
@@ -124,11 +125,16 @@
                 });
                 if (err/countDecodedCodes < 0.1) {
                     // correct code detected
-                    document.getElementById("result").innerHTML += " - Correct Barcode: { " + result.codeResult.code + "}";
+                    codigosLeidos += " - Correct Barcode: { " + result.codeResult.code + "}";
                 } else {
                     // probably wrong code
-                    document.getElementById("result").innerHTML += " - Wrong Barcode: { " + result.codeResult.code + "}";
+                    codigosLeidos += " - Wrong Barcode: { " + result.codeResult.code + "}";
                 }
+
+                document.getElementById("debug").innerHTML = codigosLeidos;
+                Quagga.stop();
+                _scannerIsRunning = false;
+
 
                 /*if (result.codeResult.code.length == 13) {
                     document.getElementById("result").innerHTML = "Barcode: { " + result.codeResult.code + "}";
