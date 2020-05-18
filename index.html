@@ -115,10 +115,30 @@
                 var texto = "Barcode detected and processed : [" + result.codeResult.code + "]";
                 console.log(texto, result);
 
-                var countDecodedCodes=0, err=0;
                 var codigosLeidos = "";
 
-                $.each(result.codeResult.decodedCodes, function(id,error){
+                var code = result.codeResult.code;
+                var lastResult = "";
+                if (lastResult !== code) {
+                        lastResult = code;
+
+                        var countDecodedCodes=0, err=0;
+                        $.each(result.codeResult.decodedCodes, function(id,error) {
+                                if (error.error!=undefined) {
+                                        countDecodedCodes++;
+                                        err += parseFloat(error.error);
+                                }
+                        });
+                        if (err / countDecodedCodes < 0.1 && sanityCheck(code)) {
+                            document.getElementById("result").innerHTML = "Barcode: { " + code + "}";
+                            Quagga.stop();
+                            _scannerIsRunning = false;
+                            document.getElementById("debug").innerHTML = "OK!";
+
+                        }
+                }
+
+              /*  $.each(result.codeResult.decodedCodes, function(id,error){
                     if (error.error!=undefined) {
                         countDecodedCodes++;
                         err+=parseFloat(error.error);
@@ -127,14 +147,14 @@
                         return false;
                     }
                 });
-                /*
+                
                 if (err/countDecodedCodes < 0.1) {
                     // correct code detected
                     codigosLeidos += " - Correct Barcode: { " + result.codeResult.code + "}";
                 } else {
                     // probably wrong code
                     codigosLeidos += " - Wrong Barcode: { " + result.codeResult.code + "}";
-                }*/
+                }
 
                 if (result.codeResult.code.length == 13) {
                     document.getElementById("result").innerHTML = "Barcode: { " + result.codeResult.code + "}";
@@ -144,6 +164,7 @@
                 } else {
                     document.getElementById("debug").innerHTML = "length = " + result.codeResult.code.length + "(length != 13)";
                 }
+                */
                 
             });
         }
