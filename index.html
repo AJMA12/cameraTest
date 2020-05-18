@@ -115,16 +115,29 @@
                 var texto = "Barcode detected and processed : [" + result.codeResult.code + "]";
                 console.log(texto, result);
 
-                console.log(result.codeResult);
+                var countDecodedCodes=0, err=0;
+                $.each(result.codeResult.decodedCodes, function(id,error){
+                    if (error.error!=undefined) {
+                        countDecodedCodes++;
+                        err+=parseFloat(error.error);
+                    }
+                });
+                if (err/countDecodedCodes < 0.1) {
+                    // correct code detected
+                    document.getElementById("result").innerHTML += " - Correct Barcode: { " + result.codeResult.code + "}";
+                } else {
+                    // probably wrong code
+                    document.getElementById("result").innerHTML += " - Wrong Barcode: { " + result.codeResult.code + "}";
+                }
 
-                if (result.codeResult.code.length == 13) {
+                /*if (result.codeResult.code.length == 13) {
                     document.getElementById("result").innerHTML = "Barcode: { " + result.codeResult.code + "}";
                     Quagga.stop();
                     _scannerIsRunning = false;
                     document.getElementById("debug").innerHTML = "OK!";
                 } else {
                     document.getElementById("debug").innerHTML = "length = " + result.codeResult.code.length + "(length != 13)";
-                }
+                }*/
                 
             });
         }
