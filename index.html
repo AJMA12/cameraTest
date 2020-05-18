@@ -115,6 +115,8 @@
                 var texto = "Barcode detected and processed : [" + result.codeResult.code + "]";
                 console.log(texto, result);
 
+                console.log(result.codeResult);
+
                 if (result.codeResult.code.length == 13) {
                     document.getElementById("result").innerHTML = "Barcode: { " + result.codeResult.code + "}";
                     Quagga.stop();
