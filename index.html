@@ -123,6 +123,9 @@
                         countDecodedCodes++;
                         err+=parseFloat(error.error);
                     }
+                    if (countDecodedCodes > 5) {
+                        return false;
+                    }
                 });
                 /*
                 if (err/countDecodedCodes < 0.1) {
