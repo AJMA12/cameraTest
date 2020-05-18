@@ -117,7 +117,8 @@
 
                 var countDecodedCodes=0, err=0;
                 var codigosLeidos = "";
-                $.each(result.codeResult.decodedCodes, function(id,error){
+
+                /*$.each(result.codeResult.decodedCodes, function(id,error){
                     if (error.error!=undefined) {
                         countDecodedCodes++;
                         err+=parseFloat(error.error);
@@ -129,7 +130,7 @@
                 } else {
                     // probably wrong code
                     codigosLeidos += " - Wrong Barcode: { " + result.codeResult.code + "}";
-                }
+                }*/
 
                 if (result.codeResult.code.length == 13) {
                     document.getElementById("result").innerHTML = "Barcode: { " + result.codeResult.code + "}";
