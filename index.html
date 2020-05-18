@@ -131,19 +131,14 @@
                     codigosLeidos += " - Wrong Barcode: { " + result.codeResult.code + "}";
                 }
 
-                document.getElementById("debug").innerHTML = codigosLeidos;
-                Quagga.stop();
-                _scannerIsRunning = false;
-
-
-                /*if (result.codeResult.code.length == 13) {
+                if (result.codeResult.code.length == 13) {
                     document.getElementById("result").innerHTML = "Barcode: { " + result.codeResult.code + "}";
                     Quagga.stop();
                     _scannerIsRunning = false;
                     document.getElementById("debug").innerHTML = "OK!";
                 } else {
                     document.getElementById("debug").innerHTML = "length = " + result.codeResult.code.length + "(length != 13)";
-                }*/
+                }
                 
             });
         }
