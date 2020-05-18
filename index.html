@@ -137,8 +137,8 @@
                         });
                         if (err / countDecodedCodes < 0.1 && sanityCheck(code)) {
                             document.getElementById("result").innerHTML = "Barcode: { " + code + "}";
-                            Quagga.stop();
-                            _scannerIsRunning = false;
+                           // Quagga.stop();
+                            //_scannerIsRunning = false;
                             document.getElementById("debug").innerHTML = "OK!";
 
                         }
