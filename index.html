@@ -118,12 +118,13 @@
                 var countDecodedCodes=0, err=0;
                 var codigosLeidos = "";
 
-                /*$.each(result.codeResult.decodedCodes, function(id,error){
+                $.each(result.codeResult.decodedCodes, function(id,error){
                     if (error.error!=undefined) {
                         countDecodedCodes++;
                         err+=parseFloat(error.error);
                     }
                 });
+                /*
                 if (err/countDecodedCodes < 0.1) {
                     // correct code detected
                     codigosLeidos += " - Correct Barcode: { " + result.codeResult.code + "}";
